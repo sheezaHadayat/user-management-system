@@ -19,10 +19,11 @@ const LoginPage = () => {
  
       
     
-        <div className="container mt-5 mb-5">
+        <div className="container mt-5 mb-5 rounded-lg ">
       <div className="row justify-content-center ">
-        <div className="col-md-5 shadow p-4 bg-light h-100">
-       <center><h3>Login</h3></center>   
+        <div className="col-md-4 shadow p-4 bg-light ">
+       <center><h4>Login</h4></center>
+       <center><p>Welcome, please enter your email and password to continue.</p>  </center> 
           <div className="form-group">
             <label>Email</label>
             <input
@@ -32,7 +33,7 @@ const LoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group mt-3">
             <label>Password</label>
             <input
               type="password"
@@ -41,7 +42,7 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <center><button className="btn btn-primary mt-3 " onClick={handleLogin}>
+          <center><button className="btn btn-primary mt-5 mb-5 w-100" onClick={handleLogin}>
             Login
           </button></center>
           

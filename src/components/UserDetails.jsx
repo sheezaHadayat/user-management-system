@@ -30,6 +30,9 @@ const UserDetailsPage = () => {
         prevUsers.filter((user) => user.id !== parseInt(userId))
       );
       setShowDeleteModal(true);
+      setTimeout(() => {
+        navigate("/user-listing");
+      }, 1000); 
     });
   };
 
@@ -58,7 +61,7 @@ const UserDetailsPage = () => {
         <div class="container">
           <h2 class="navbar-brand m-0">User Details</h2>
           
-          <a href="/" className="btn btn-primary">Logout</a>
+          <a href="/" className="btn btn-dark">Logout</a>
         </div>
       </nav>
       <div className="form-group">
