@@ -30,7 +30,7 @@ const UserListingPage = () => {
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
           <h2 class="navbar-brand m-0">User Listing</h2>
-          <a href="/">Logout</a>
+          <a href="/" className="btn btn-dark">Logout</a>
         </div>
       </nav>
       <div className="form-group my-4">

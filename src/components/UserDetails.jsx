@@ -13,6 +13,8 @@ const UserDetailsPage = () => {
   const [newName, setNewName] = useState(currentUser?.name);
   const [newEmail, setNewEmail] = useState(currentUser?.email);
   const [newPhone, setNewPhone] = useState(currentUser?.phone);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   useEffect(() => {
     // Fetch user details from the users array using userId
@@ -27,7 +29,7 @@ const UserDetailsPage = () => {
       setUsers((prevUsers) =>
         prevUsers.filter((user) => user.id !== parseInt(userId))
       );
-      navigate("/user-listing");
+      setShowDeleteModal(true);
     });
   };
 
@@ -43,7 +45,7 @@ const UserDetailsPage = () => {
         user.id === parseInt(userId) ? updatedUser : user
       )
     );
-    navigate("/user-listing");
+    setShowSuccessModal(true);
   };
 
   if (!currentUser) {
@@ -55,7 +57,8 @@ const UserDetailsPage = () => {
       <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
         <div class="container">
           <h2 class="navbar-brand m-0">User Details</h2>
-          <a href="/">Logout</a>
+          
+          <a href="/" className="btn btn-primary">Logout</a>
         </div>
       </nav>
       <div className="form-group">
@@ -98,6 +101,76 @@ const UserDetailsPage = () => {
       <button className="btn btn-danger" onClick={handleDelete}>
         Delete User
       </button>
+
+      {/* Delete Modal */}
+      <div
+        className={`modal fade ${showDeleteModal ? "show" : ""}`}
+        tabIndex="-1"
+        role="dialog"
+        style={{ display: showDeleteModal ? "block" : "none" }}
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Success</h5>
+              <button
+                type="button"
+                className="btn-close"
+                onClick={() => setShowDeleteModal(false)}
+              />
+            </div>
+            <div className="modal-body">User deleted successfully.</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => {
+                  setShowDeleteModal(false);
+                  navigate("/user-listing");
+                }}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Update Modal */}
+      <div
+        className={`modal fade ${showSuccessModal ? "show" : ""}`}
+        tabIndex="-1"
+        role="dialog"
+        style={{ display: showSuccessModal ? "block" : "none" }}
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Success</h5>
+              <button
+                type="button"
+                className="btn-close"
+                onClick={() => setShowSuccessModal(false)}
+              />
+            </div>
+            <div className="modal-body">User updated successfully.</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => {
+                  setShowSuccessModal(false);
+                  navigate("/user-listing");
+                }}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   );
 };

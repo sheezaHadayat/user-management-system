@@ -16,10 +16,13 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-4">
-          <h3>Login</h3>
+ 
+      
+    
+        <div className="container mt-5 mb-5">
+      <div className="row justify-content-center ">
+        <div className="col-md-5 shadow p-4 bg-light h-100">
+       <center><h3>Login</h3></center>   
           <div className="form-group">
             <label>Email</label>
             <input
@@ -38,12 +41,17 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button className="btn btn-primary mt-3" onClick={handleLogin}>
+          <center><button className="btn btn-primary mt-3 " onClick={handleLogin}>
             Login
-          </button>
+          </button></center>
+          
+         
         </div>
+       
       </div>
+     
     </div>
+   
   );
 };
 
