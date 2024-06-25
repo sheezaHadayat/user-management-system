@@ -1,6 +1,4 @@
 
-
-
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../contexts/userContext";
@@ -28,15 +26,9 @@ const UserDetailsPage = () => {
   }, [userId, users, setCurrentUser]);
 
   const handleDelete = () => {
-    deleteUser(userId).then(() => {
-      setUsers((prevUsers) =>
-        prevUsers.filter((user) => user.id !== parseInt(userId))
-      );
+   
       setShowDeleteModal(true);
-      setTimeout(() => {
-        navigate("/user-listing");
-      }, 1000); 
-    });
+     
   };
 
   const handleUpdate = () => {
@@ -163,17 +155,32 @@ const UserDetailsPage = () => {
                 onClick={() => setShowDeleteModal(false)}
               />
             </div>
-            <div className="modal-body">User deleted successfully.</div>
+            <div className="modal-body">Are you sure you want to delete User</div>
             <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-primary"
                 onClick={() => {
+                  setUsers((prevUsers) =>
+                    prevUsers.filter((user) => user.id !== parseInt(userId))
+                  )
+
                   setShowDeleteModal(false);
                   navigate("/user-listing");
                 }}
               >
-                Close
+                Yes
+              </button>
+
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => {
+                  setShowDeleteModal(false);
+                  
+                }}
+              >
+                No
               </button>
             </div>
           </div>

@@ -23,8 +23,9 @@ const UserListingPage = () => {
 
   const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
+  
   );
-
+ 
   return (
     <div className="container mt-5">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,7 +51,7 @@ const UserListingPage = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredUsers ? (
+          {filteredUsers.length>0 ? (
             filteredUsers.map((user) => (
               <tr key={user.id}>
                 <td>{user.name}</td>
@@ -66,7 +67,7 @@ const UserListingPage = () => {
               </tr>
             ))
           ) : (
-            <center>loading</center>
+            <center>No Records Found</center>
           )}
         </tbody>
       </table>
